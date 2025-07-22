@@ -1,359 +1,102 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lunaria</title>
-  <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://ar-hosting.pages.dev/1752900730767.jpg') center/cover no-repeat fixed;
-      color: white;
-      overflow-x: hidden;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 15px;
-    }
-    nav a {
-      color: cyan;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    h1 {
-      text-align: center;
-      margin: 30px 0 10px;
-      font-size: 3em;
-    }
-    .description {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 1.2em;
-      color: #ccc;
-    }
-    .welcome-message {
-      text-align: center;
-      font-size: 1em;
-      margin-bottom: 20px;
-      color: lightgreen;
-    }
-    .card {
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 600px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,255,255,0.2);
-    }
-    .btn, .copy-btn {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      background: cyan;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-    }
-    #char {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      z-index: 10;
-      pointer-events: none;
-    }
-    #login-page, #register-page {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    #login-box, #register-box {
-      background: rgba(255,255,255,0.05);
-      padding: 40px;
-      border-radius: 15px;
-      text-align: center;
-      color: white;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-      width: 90%;
-      max-width: 400px;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-    }
-    button {
-      padding: 10px 25px;
-      background: cyan;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    #loading {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.8);
-      z-index: 2000;
-      justify-content: center;
-      align-items: center;
-      color: cyan;
-      font-size: 1.5em;
-    }
-    #snow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 999;
-    }
-    #discord-popup {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.85);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      z-index: 10000;
-      color: white;
-      text-align: center;
-      max-width: 300px;
-    }
-    #discord-popup button {
-      background: #5865F2;
-      color: white;
-      margin-top: 10px;
-    }
-    #intro-page {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    #intro-page button {
-    background: cyan;
-    color: black;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    }
-      #intro-page button:hover {
-    transform: scale(1.05);
-    background: #00ffff;
-    }
-    @media (max-width: 600px) {
-    #intro-page {
-    flex-direction: column;
-    padding: 20px;
-    text-align: center;
-    }
-    #intro-page h1 {
-    font-size: 1.5em;
-    }
-    #intro-page p {
-    font-size: 1em;
-    }
-    #intro-page button {
-    width: 100%;
-    padding: 14px;
-    }
-  </style>
+  <script src="https://kit.fontawesome.com/a047c038c8.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BETA SERVER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="image/lyyservice.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="snow"></canvas>
-<div id="discord-popup">
-  <p>Gabung ke Discord kami untuk info dan giveaway terbaru!</p>
-  <button onclick="window.open('https://discord.gg/eKtHFcjTtU', '_blank')">Join Discord</button>
-</div>
-<div id="intro-page" style="display:flex;">
-  <h1 style="color:white;font-size:2em;text-align:center;margin-bottom:20px;">Selamat Datang di Lunaria</h1>
-  <p style="color:white;text-align:center;padding:0 20px;margin-bottom:20px;">
-    🔹 Untuk mulai bermain, kamu harus membaca petunjuk berikut:<br><br>
-    - Download & salin file host yang dibutuhkan<br>
-    - Gunakan PTunnel sesuai perangkat kamu (Android/iOS)<br>
-    - Gabung Discord untuk info update event<br>
-    - Setelah paham, klik tombol di bawah
-  </p>
-  <button onclick="hideIntro()" style="background:cyan;color:black;padding:12px 24px;border:none;border-radius:8px;font-weight:bold;">Saya Mengerti & Lanjutkan</button>
-</div>
-<div id="loading">Loading...</div>
-<div id="login-page" style="display:none;">
-  <div id="login-box">
-    <h2>Lunaria Login</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Masuk</button>
-    <p style="margin-top:10px">Belum punya akun? <a href="#" onclick="showRegister()" style="color:cyan">Daftar</a></p>
-  </div>
-</div>
-<div id="register-page" style="display:none;">
-  <div id="register-box">
-    <h2>Registrasi Akun</h2>
-    <input type="text" placeholder="Username">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <button onclick="registerFake()">Daftar</button>
-    <p style="margin-top:10px">Sudah punya akun? <a href="#" onclick="hideRegister()" style="color:cyan">Login</a></p>
-  </div>
-</div>
-<div id="main-page" style="display:none;">
-  <nav>
-    <a href="#">Beranda</a>
-    <a href="#">Event</a>
-    <a href="#">Statistik</a>
-    <a href="#">Donasi</a>
-  </nav>
-  <h1>Lunaria</h1>
-  <p class="description">Growtopia Private Server keren, beda dari yang lain, event harian, custom item, dan komunitas aktif!</p>
-  <p class="welcome-message" id="greeting"></p>
-  <div class="card">
-    <h2>📈 Statistik Server</h2>
-    <p>👥 Pemain Online: <span id="playerCount">1</span></p>
-    <p>🗂️ Custom Items: 781</p>
-  </div>
-  <div class="card">
-    <h2>🧩 Tampilan Server:</h2>
-    <p>- Spawn World modern & rapi<br><br>- Event World aktif setiap minggu<br>- Display custom item / item rare<br>- World para pemain (Parkour, Shop, Roleplay, dsb)</p>
-  </div>
-  <div class="card">
-    <h2>🌍 World Showcase</h2>
-    <img src="https://ar-hosting.pages.dev/1752473409315.jpg" alt="World" style="width:100%; border-radius:10px">
-  </div>
-  <div class="card">
-    <h2>🌐 Semua Host & VHost Lunaria</h2>
-    <a class="btn" href="https://www.mediafire.com/file/an2k7k7paeos4rf/Lunaria.txt/file" target="_blank">Download VHOST</a>
-    <a class="btn" href="https://growsoft.cc/android.txt" target="_blank">COPY PTUNNEL ANDROID</a>
-    <a class="btn" href="https://growsoft.cc/ios.txt" target="_blank">COPY PTUNNEL IOS</a>
-    <button class="copy-btn" onclick="copyText(`91.134.85.13 growtopia1.com\n91.134.85.13 growtopia2.com\n91.134.85.13 www.growtopia1.com\n91.134.85.13 www.growtopia2.com`)">COPY MANUAL HOST WINDOWS</button>
-    <button class="copy-btn" onclick="copyText(`[General]\nbypass-system = true\n[Rule]\nFINAL,DIRECT\n[Host]\ngrowtopia1.com = 91.134.85.13\ngrowtopia2.com = 91.134.85.13\nwww.growtopia1.com = 91.134.85.13\nwww.growtopia2.com = 91.134.85.13`)">COPY HOST IOS</button>
-    <a class="btn" href="https://wa.me/6287733150588" target="_blank">Chat WA Owner</a>
-    <a class="btn" href="https://discord.gg/eKtHFcjTtU" target="_blank">Join Discord</a>
-  </div>
-  <div class="card">
-    <h2>Features Lunaria</h2>
-    <p>📌 Tentang Server:<br><br>Server Growtopia Private full fitur buatan lokal! Stabil, ringan, cocok buat grinding, koleksi, sosial & santai. Aktif 24/7 dan bebas lag!<br><br>⚙️ Fitur Unggulan:<br>- Anti Lag! No auto crash!<br>- Item Mod & Custom Item<br>- Daily Reward & Login Bonus<br>- World Lock, Diamond Lock, BGL Aktif<br>- Sistem Box Reward & Event Harian<br>- Parkour, Puzzle, & World Challenge<br>- Anti Cheat Aktif<br>- Admin Fast Respon & Komunitas Aktif<br><br>🌐 Info Server:<br>IP: 91.134.85.13<br>  Versi: lastest<br><br>👥 Komunitas:<br>Discord: https://discord.gg/eKtHFcjTtU<br>WhatsApp: wa.me/6287733150588<br><br>📸 Screenshot dan update event? Cek di Discord!<br>🔍 Cari Partner?<br>Kami cari partner buat bantu urus komunitas & promosi. Gw urus coding/servernya — lu bantu komunitas & ide event.  
-Minat? DM aja! </p>
-  </div>
-</div>
-<img src="https://ar-hosting.pages.dev/1752469199214.png" id="char">
-<audio autoplay loop id="bgm">
-  <source src="https://files.catbox.moe/rj25l5.mp3" type="audio/mp3">
-</audio>
-<script>
-function login() {
-  document.getElementById("login-page").style.display = "none";
-  document.getElementById("main-page").style.display = "block";
-  document.getElementById("register-page").style.display = "none";
-  document.getElementById("bgm").play();
-}
-function showRegister() {
-  document.getElementById("login-page").style.display = "none";
-  document.getElementById("register-page").style.display = "flex";
-}
-function hideRegister() {
-  document.getElementById("register-page").style.display = "none";
-  document.getElementById("login-page").style.display = "flex";
-}
-function registerFake() {
-  document.getElementById("loading").style.display = "flex";
-  setTimeout(() => {
-    document.getElementById("loading").style.display = "none";
-    alert("✅ Pendaftaran berhasil. Silakan login!");
-    hideRegister();
-  }, 2000);
-}
-function copyText(text) {
-  navigator.clipboard.writeText(text);
-  alert("✅ Teks berhasil disalin!");
-}
-const greetings = [
-  "Selamat datang kembali, Growtopian!",
-  "Event baru sudah siap dimulai!",
-  "Ayo build dunia impianmu!",
-  "Jangan lupa cek donasi VIP~",
-  "Main bareng teman makin seru!"
-];
-document.getElementById("greeting").innerText = greetings[Math.floor(Math.random() * greetings.length)];
-const snowCanvas = document.getElementById('snow');
-const ctx = snowCanvas.getContext('2d');
-let snowflakes = [];
-function resize() {
-  snowCanvas.width = window.innerWidth;
-  snowCanvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
-function createSnowflake() {
-  return {
-    x: Math.random() * snowCanvas.width,
-    y: Math.random() * snowCanvas.height,
-    radius: Math.random() * 4 + 1,
-    speed: Math.random() * 1 + 0.5
-  };
-}
-function hideIntro() {
-  document.getElementById("intro-page").style.display = "none";
-  document.getElementById("login-page").style.display = "flex";
-  document.getElementById("main-page").style.display = "none";
-  document.getElementById("register-page").style.display = "none";
-}
 
-  window.onload = function() {
-  document.getElementById("login-page").style.display = "none";
-  document.getElementById("main-page").style.display = "none";
-  document.getElementById("register-page").style.display = "none";
-}
-function updateSnow() {
-  ctx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
-  snowflakes.forEach((f, i) => {
-    f.y += f.speed;
-    if (f.y > snowCanvas.height) snowflakes[i] = createSnowflake();
-    ctx.beginPath();
-    ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#fff';
-    ctx.fill();
-  });
-  requestAnimationFrame(updateSnow);
-}
-for (let i = 0; i < 100; i++) snowflakes.push(createSnowflake());
-updateSnow();
-function updatePlayerCount() {
-  let el = document.getElementById("playerCount");
-  let now = parseInt(el.innerText);
-  let next = now + (Math.random() < 0.5 ? -1 : 1);
-  if (next < 1) next = 1;
-  el.innerText = next;
-}
-setInterval(updatePlayerCount, 5000);
-</script>
+  <!--Menu Button-->
+  <button id="menu-btn" class="menu-button">MENU</button>
+
+  <!--Panel Menu-->
+  <div id="side-menu" class="side-menu hidden">
+<h3>MENU</h3>
+<ul>
+  <li><a href="index.html" class="menu-style"><i class="fa-solid fa-house"></i> Home</a></li>
+  <li><a href="howtoplay.html" class="menu-style"><i class="fa-solid fa-gamepad"></i> How To Play</a></li>
+  <li><a href="comunitygroup.html" class="menu-style"><i class="fa-solid fa-user-group"></i> Community Group</a></li>
+<h4>OTHER</h4>
+ <li><a href="faq.html" class="menu-style"><i class="fa-solid fa-question"></i></i> Faq</a></li>
+  <li><a href="lyyservice.html" class="menu-style"><i class="fa-solid fa-cart-plus"></i> Purchase GTPS</a></li>
+</ul>
+</div>
+
+  <!--Fitur Description-->
+  <h1>BETA SERVER</h1>
+  <div class="box-container">
+  <h2>BETA SERVER</h2>
+  <p class="small-text">Hey there, welcome to BETA SERVER!</p>
+  <p class="small-text">Tired of the same old grind? Looking for something fresh, fun, and packed with surprises? You’ve just found the right place <p class="strong">BETA SERVER <span class="small-text">isn’t just another private server it’s a whole new way to enjoy Growtopia. We’ve taken the classic gameplay you love and added our own twist: more features, more freedom, and a vibrant community that’s always active.</p>
+  
+  <h2>Features</h2>
+  <strong>BETA SERVER</strong> offers an enhanced Growtopia experience with custom features that push the limits of creativity and gameplay. from smoother mechanics to exclusive systems, every element is designed to make your time in-game more rewarding, immersive, and exciting.</p>
+<div class="slider">
+  <div class="slider-track">
+    <div class="slide">
+      <div class="title"><i class="fa-solid fa-gear"></i> Server Configuration</div>
+      <div class="desc">Configure events, lots prefixes, links, and more all in one place fast, simple, and flexible.</div>
+    </div>
+    <div class="slide">
+      <div class="title"><i class="fa-solid fa-shield-halved"></i> NPC Battle Game</div>
+      <div class="desc">Enter the arena and prove your strength 1v1, team fights, or survival it’s all up to you. victory awaits the bold.</div>
+    </div>
+    <div class="slide">
+      <div class="title"><i class="fa-solid fa-gamepad"></i> Mini Games</div>
+      <div class="desc">Feeling bored? Jump into quick, fun mini games. Fast-paced and endlessly fun.</div>
+    </div>
+    <!-- duplikat untuk looping mulus -->
+    <div class="slide">
+      <div class="title"><i class="fa-solid fa-calendar"></i> Game Events</div>
+      <div class="desc">Exciting new challenges every week & month with awesome rewards, Open to all players don’t miss out!</div>
+      </div>
+    <div class="slide">
+      <div class="title"><i class="fa-solid fa-question"></i> Quest & Missions</div>
+      <div class="desc">Complete daily and weekly challenges to earn awesome rewards, Every step brings purpose and excitement.</div>
+      </div>
+    <div class="slide">
+      <div class="title"><i class="fa-solid fa-gift"></i> Daily Giveaway</div>
+      <div class="desc">Login daily and join the automatic giveaway, everyone has a chance to win just log in & claim.</div>
+    </div>
+  </div>
+</div>
+
+  <h2>What's Interesting?</h2>
+  <p class="text-info">1,000+ Unique Custom Items - <span class="small-text">Exclusive farmables, gachas, and collectibles.</p>
+  <p class="text-info">Daily Updates & Bug Fixes - <span class="small-text">Always improving the player experience.</p>
+  <p class="text-info">Engaging Events & Rewards - <span class="small-text">Participate in fun activities and win prizes.</p>
+  <p class="text-info">Strong Community & Trading System – <span class="small-text">Interact with a vibrant player base.</p>
+  <p class="text-info">Professional Developers - <span class="small-text">A team dedicated to constant improvement.</p>
+
+  <!--Group-->
+  <h2>Support & Privacy Policy</h2>
+   <p class="small-text">Got a problem, question, or just want to say hi? Our support team is ready to assist you, Before reaching out, make sure to check the FAQ for the comon issues.</p>
+   <p class="important">WARNING: <span class="small-text">Initiating a chargeback will lead to a permanent ban from both the server and the store. Any appeals related to chargebacks will be automatically denied.</p>
+   <p class="small-text">We value your trust and are committed to keeping your information safe, IP address and device info for security purposes only, basic account data username, email if provided, game-related data inventory, stats, chat logs, uour data stays private and protected, by using our server, you agree to this policy. For any questions, contact us bellow.</p>
+</p>
+</div>
+
+   <!-- GUIDELINES -->
+<div class="main-wrapper-box">
+  <div class="section-title-box">
+    <h3>GUIDELINES</h3>
+  </div>
+  <div class="section-box">
+    <p>
+      <strong>BETA SERVER</strong> It's important to note that playing on our private server is typically separate from the official Growtopia servers and involves connecting to a different server address. The rules and regulations of the official game may not apply on private server.
+    </p>
+  </div>
+
+  <div class="section-box copyright-box">
+    <p><strong>All rights reserved. 2025 © Lyy Service</strong><br>
+    We’re not affiliated with or endorsed by Ubisoft.</p>
+  </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
