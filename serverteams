@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/a047c038c8.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server Teams</title>
+  <link rel="icon" type="image/png" href="image/lyyservice.png">
+  <style>
+
+     *  {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+     /*Menu Button*/
+    .menu-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 70px;
+      height: 70px;
+      background-color: #ff6af8;
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      z-index: 1000;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+ 
+    /*Side Menu*/
+    .side-menu {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      width: 220px;
+      background: rgba(0, 0, 0, 0.6); /* transparan hitam */
+      color: white;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      z-index: 999;
+      transition: transform 0.3s ease;
+    }
+
+    .side-menu.hidden {
+      transform: translate(-120%, -50%);
+    }
+
+    .side-menu h2 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu ul li {
+      margin-bottom: 12px;
+    }
+
+    .side-menu ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      padding: 10px 15px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .side-menu ul li a:hover {
+     background: #333;
+     transform: translateX(5px);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #666;
+      margin: 15px;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.1);
+    }
+ 
+    /*Button Menu Styling*/
+    .menu-style {
+      display: block;
+      background: linear-gradient(145deg, #ff6af8, #bb5cb6);
+      color: #ffffff;
+      font-weight: bold;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(17, 17, 17, 0.281);
+      transition: all 0.2s ease;
+    }
+    .menu-style:hover {
+      background: linear-gradient(145deg, #ff749d, #ff76a4);
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    /*Body Website*/
+    body {
+      font-family: Arial, sans-serif;
+      background: url('image/background.png') repeat;
+      background-size: auto;
+      animation: moveBg 60s linear infinite;
+      color: #ffffff;
+      text-align: center;
+      padding: 50px 0;
+    }
+    @keyframes moveBg {
+    from {
+    background-position: 0 0;
+    }
+    to {
+    background-position: 1000px 1000px;
+    }
+    }
+
+    /*Text H1*/
+    h1 {
+      margin-bottom: 30px;
+      font-size: 5rem;
+      background-image: linear-gradient(270deg, #ff6af8, #f7f5f6);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: headerRGB 6s ease infinite;
+    }
+    @keyframes headerRGB {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /**/
+    .button-container {
+      margin-bottom: 40px;
+    }
+
+    /*Buttons*/
+    .button {
+      display: inline-block;
+      background: linear-gradient(145deg, #ff6af8, #ff6af8);
+      color: #ffffff;
+      font-weight: bold;
+      padding: 12px 16px;
+      text-align: center;
+      width: auto;
+      margin: 10px 0;
+      white-space: nowrap;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .button:hover {
+      background: linear-gradient(145deg, #ff6af8, #ff6af8);
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    .section-buttons {
+      margin-top: 20px;
+    }
+
+    .section-content {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #1e1e1e;
+      border-radius: 8px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /*Text H2*/
+    h2 {
+      margin-top: 60px;
+      font-size: 1.5rem;
+    }
+
+    /*Text Info*/
+    .text-info {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #ff6af8;
+      margin-top: 10px;
+    }
+
+    /*Small Text*/
+    .small-text {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #cccccc;
+      margin-top: 10px;
+    }
+
+     /* Container Rules & Copyright */
+    .main-wrapper-box {
+       width: 100vw;
+       background: rgba(0, 0, 0, 0.6);
+       padding: 30px 40px;
+       border-radius: 0;
+       box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+       margin: 40px 0;
+    }
+
+    .section-title-box h3 {
+      text-align: center;
+      font-style: italic;
+      color: white;
+      font-size: 20px;
+      margin-bottom: 20px;
+   }
+
+   .section-box {
+      background: transparent;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      text-align: justify;
+      margin-bottom: 20px;
+   }
+
+   .section-box strong {
+      font-weight: 700;
+   }
+
+   .copyright-box {
+      font-size: 14px;
+   }
+
+    /*Box IP*/
+    pre.ip-box {
+      background-color: #0000008c;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+      color: rgb(255, 255, 255);
+      text-align: left;
+    }
+
+    /*Box Text*/
+    .box-text {
+      display: flex;
+      align-items: flex-start;
+      background-color: #1e1e2fe8;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 4);
+    }
+
+    /*Box Container*/
+    .box-container {
+      background: #0e0e0eaf;
+      border-radius: 20px;
+      padding: 25px;
+      border: 1px solid #332;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      margin-top: 30px;
+
+      width: 90%;             
+      max-width: 720px;       
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /**Important Text*/
+    .important {
+      font-size: 1rem;
+      color: rgb(255, 255, 255);
+    }
+
+    /*Slider*/
+    .slider {
+      width: 100%;
+      overflow: hidden;
+      background: #111;
+      padding: 20px 0;
+    }
+
+    .slider-track {
+      display: flex;
+      width: calc(220px * 6);
+      animation: scroll 15s linear infinite;
+    }
+
+    .slide {
+      width: 220px;
+      flex-shrink: 0;
+      background: #ff6af85d;
+      border: 2px solid #ff6af8;
+      color: white;
+      margin: 0 10px;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px #000000;
+    }
+
+    /*Title Text*/
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .desc {
+     font-size: 14px;
+     color: #ccc;
+    }
+
+    @keyframes scroll {
+    0% {
+     transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+   }
+ }
+
+    .team-section {
+       padding: 40px 20px;
+    }
+
+    .team-section h2 span {
+       border-bottom: 3px solid orange;
+       font-size: 28px;
+    }
+
+    .team-section p {
+       color: rgb(255, 255, 255);
+       margin-bottom: 30;
+       font-size: 17px;
+    }
+
+    .marquee {
+       overflow: hidden;
+       position: relative;
+       width: 100%;
+    }
+
+    .track {
+       display: flex;
+       gap: 20px;
+    }
+
+    .card {
+       flex: 0 0 auto;
+       width: 200px;
+       background-color: #ff6af85d;
+       border: 2px solid #ff6af8;
+       border-radius: 12px;
+       padding: 15px;
+       box-shadow: 0 0 10px #000;
+       text-align: center;
+    }
+
+    .card img {
+       width: 80px;
+       height: 80px;
+       object-fit: cover;
+       border-radius: 8px;
+       margin-bottom: 10px;
+    }
+
+    .card h3 {
+       margin: 5px 0;
+       color: rgb(255, 255, 255);
+    }
+
+    .card a {
+       display: inline-block;
+       margin-top: 10px;
+       padding: 6px 12px;
+        background-color: #ff6af85d;
+       border-radius: 6px;
+       color: #ffffff;
+       text-decoration: none;
+       font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!--Menu Button-->
+  <button id="menu-btn" class="menu-button">MENU</button>
+
+  <!--Panel Menu-->
+  <div id="side-menu" class="side-menu hidden">
+<h3>MENU</h3>
+<ul>
+  <li><a class='menu-style' href='/'><i class="fa-solid fa-house"></i> Home</a></li>
+  <li><a class='menu-style' href='/serverteam'><i class="fa-solid fa-people-group"></i> Server Teams</a></li>
+  <li><a class='menu-style' href='/howtoplay'><i class="fa-solid fa-gamepad"></i> How To Play</a></li>
+  <li><a class='menu-style' href='/comunitygroup'><i class="fa-solid fa-user-group"></i> Community Group</a></li>
+<h4>OTHER</h4>
+  <li><a class='menu-style' href='/shop'><i class="fa-solid fa-cart-shopping"></i> Shop</a></li>
+  <li><a class='menu-style' href='/faq'><i class="fa-solid fa-question"></i></i> Faq</a></li>
+  <li><a class='menu-style' href='/lyyservice'><i class="fa-solid fa-cart-plus"></i> Purchase GTPS</a></li>
+</ul>
+</div>
+   
+<!--Server Teams-->
+<div class="box-container">
+  <section class="team-section">
+   <p class="small-text"><h2>Server Teams</h2>
+    
+    <p>Behind every smooth experience is a team that works with heart and dedication, From leading the vision to helping players and building new features, our team ensures the server stays active, safe, and fun.</p>
+    <p>Each role matters the Owner sets the direction, Helpers assist players, Developers bring new ideas to life, and Moderators keep everything in balance.</p>
+    <p>Together, we’re not just running a server we’re building a community.</p>
+
+
+    <div class="marquee" id="wrap">
+      <div class="track" id="track">
+        <!-- Card asli -->
+        <div class="card">
+          <img src="image/image4.png" alt="lyypng" />
+          <h3>Lyy</h3>
+          <p>Owner</p>
+          <a href="https://discord.gg/6qMv84fU" style="border: 2px solid #ff6af8;">Lyy's Discord</a>
+        </div>
+        <div class="card">
+          <img src="image/image2.png" alt="navy" />
+          <h3>Navy</h3>
+          <p>VIP+</p>
+          <a href="https://discord.gg/6qMv84fU" style="border: 2px solid #ff6af8;">Navy's Discord</a>
+        </div>
+        <div class="card">
+          <img src="image/image5.png" alt="leopng" />
+          <h3>Leo</h3>
+          <p>VIP</p>
+          <a href="https://discord.gg/6qMv84fU" style="border: 2px solid #ff6af8;">Leo's Discord</a>
+        </div>
+         <div class="card">
+          <img src="image/image6.png" alt="mrpandapng" />
+          <h3>MrPanda</h3>
+          <p>VIP</p>
+          <a href="https://discord.gg/6qMv84fU" style="border: 2px solid #ff6af8;">MrPanda's Discord</a>
+        </div>
+        <div class="card">
+          <img src="image/image7.png" alt="yjpng" />
+          <h3>YJ</h3>
+          <p>Uknown</p>
+          <a href="https://discord.gg/6qMv84fU" style="border: 2px solid #ff6af8;">YJ's Discord</a>
+        </div>
+        </div>
+      </div>
+    </div>
+
+<!-- GUIDELINES -->
+<div class="main-wrapper-box">
+  <div class="section-title-box">
+    <h3>GUIDELINES</h3>
+  </div>
+  <div class="section-box">
+    <p>
+      <strong>BETA SERVER</strong> It's important to note that playing on our private server is typically separate from the official Growtopia servers and involves connecting to a different server address. The rules and regulations of the official game may not apply on private server.
+    </p>
+  </div>
+
+  <div class="section-box copyright-box">
+    <p><strong>All rights reserved. 2025 © Lyy Service</strong><br>
+    We’re not affiliated with or endorsed by Ubisoft.</p>
+  </div>
+</div>
+<script>
+  const menuBtn =
+document.getElementById("menu-btn");
+const sideMenu =
+document.getElementById("side-menu");
+
+menuBtn.addEventListener("click", () => {
+    sideMenu.classList.toggle("hidden");
+});
+
+function showSection(id) {
+const sections = document.querySelectorAll('.section-content');
+sections.forEach(section => section.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+const wrap  = document.getElementById('wrap');
+const track = document.getElementById('track');
+
+// Gandakan isi track sampai bisa loop dua kali
+while (track.scrollWidth < wrap.clientWidth * 2) {
+  track.innerHTML += track.innerHTML;
+}
+
+// Scroll loop otomatis
+let speed = 0.8; // bisa diubah ke 1 kalau mau lebih cepat
+function loop() {
+  wrap.scrollLeft += speed;
+  if (wrap.scrollLeft >= track.scrollWidth / 2) {
+    wrap.scrollLeft -= track.scrollWidth / 2;
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
